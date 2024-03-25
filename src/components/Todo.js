@@ -1,7 +1,12 @@
 import React from 'react'
 
-function Todo({todoItem}) {
+function Todo({todoItem, deleteTodoItem}) {
     const {task, id, completed} = todoItem;
+
+    const handleDeleteItem = ()=>{
+        deleteTodoItem(id)
+    }
+
 
   return (
 
@@ -9,7 +14,7 @@ function Todo({todoItem}) {
         <div>
           <span>{task} </span>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={handleDeleteItem}>Delete</button>
         </div>
     </div>
   )
