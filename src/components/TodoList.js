@@ -15,7 +15,18 @@ function TodoList() {
             if(item.id !== TodoItemId)
                 return item
         })
+        setTodoItemsList(updatedList)
+    }
 
+    const editTodoItem = (todoItem) =>{
+        const updatedList = todoItemsList.map(item => {
+            if(item.id === todoItem.id){
+                return {...item, task : todoItem.todoTask}
+            }else{
+                return item
+            }
+        })
+       
         setTodoItemsList(updatedList)
     }
 
@@ -29,6 +40,7 @@ function TodoList() {
                     key={index}
                     todoItem={todoItem}
                     deleteTodoItem = {deleteTodoItem}
+                    editTodoItem = {editTodoItem}
                     />
                 )
             }
