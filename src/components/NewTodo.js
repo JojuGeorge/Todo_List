@@ -6,8 +6,13 @@ function NewTodo({newTodo}) {
     const [todoItem, setTodoItem] = useState();
 
     const handleAddNewTodo = ()=>{
-        newTodo({task:todoItem, id:uuid(), completed:false});
-        setTodoItem("")
+        if(todoItem !== ""){
+            newTodo({task:todoItem, id:uuid(), completed:false});
+            setTodoItem("")
+        }
+        else{
+            console.log("enter data - emtpy string")
+        }
     }
 
   return (
