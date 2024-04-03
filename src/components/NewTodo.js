@@ -3,7 +3,7 @@ import {v4 as uuid} from "uuid";
 
 function NewTodo({newTodo}) {
 
-    const [todoItem, setTodoItem] = useState();
+    const [todoItem, setTodoItem] = useState("");
 
     const handleAddNewTodo = ()=>{
         if(todoItem !== ""){
@@ -18,7 +18,7 @@ function NewTodo({newTodo}) {
   return (
     <div>
         <div>
-            <label>New Todo</label>
+            <p><label>New Todo</label></p>
             <input type="text" value={todoItem} onChange={event => setTodoItem(event.target.value)}/>
             <button onClick={handleAddNewTodo}>Add</button>
         </div>

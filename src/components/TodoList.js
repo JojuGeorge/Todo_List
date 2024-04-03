@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Todo from './Todo';
 import NewTodo from './NewTodo';
+import ListStyles from './TodoList.module.css'
+
 
 function TodoList() {
 
@@ -8,6 +10,18 @@ function TodoList() {
 
     const createTodoItem = (newTodoItem)=>{
         setTodoItemsList([...todoItemsList, newTodoItem] );
+    }
+
+    const completedTodoItem = (id)=>{
+        const updatedList = todoItemsList.map(item => {
+            if(item.id === id){
+                return {...item, completed : !item.completed}
+            }else{
+                return item
+            }
+        })
+       
+        setTodoItemsList(updatedList)
     }
 
     const deleteTodoItem = (TodoItemId) => {
@@ -31,7 +45,9 @@ function TodoList() {
     }
 
   return (
-    <div>
+    <div className={ListStyles.TodoList}>
+
+        <h1>Todo List</h1>
         
         <div>
             {
@@ -41,12 +57,13 @@ function TodoList() {
                     todoItem={todoItem}
                     deleteTodoItem = {deleteTodoItem}
                     editTodoItem = {editTodoItem}
+                    completedTodoItem = {completedTodoItem}
                     />
                 )
             }
         </div>
 
-        <div>
+        < div >
             <NewTodo newTodo={createTodoItem}/>
         </div>
     </div>

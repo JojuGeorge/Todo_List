@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
+import TodoStyles from './Todo.module.css'
 
-function Todo({todoItem, deleteTodoItem, editTodoItem}) {
+
+function Todo({todoItem, completedTodoItem, deleteTodoItem, editTodoItem}) {
     const {task, id, completed} = todoItem;
 
     const [todoTask, setTodoTask] = useState(task)
     const [editing, setEditing] = useState(false)
+
+    const handleCompleted = ()=>{
+        completedTodoItem(id)
+    }
 
     const handleDeleteItem = ()=>{
         deleteTodoItem(id)
@@ -26,7 +32,8 @@ function Todo({todoItem, deleteTodoItem, editTodoItem}) {
         <div> 
             {!editing ? (
             <div>
-                 <span>{task} </span>
+                 <span className={completed ? TodoStyles.completed +" "+ TodoStyles.todoItem: TodoStyles.todoItem} onClick={handleCompleted}>{task} </span>
+                 <input type="checkbox" checked={completed} onChange={handleCompleted}/>
                  <button onClick={handleEditItem}>Edit</button>
                  <button onClick={handleDeleteItem}>Delete</button>
              </div>
