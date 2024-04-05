@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {v4 as uuid} from "uuid";
+import NewTodoStyles from './NewTodo.module.css'
 
 function NewTodo({newTodo}) {
 
@@ -17,8 +18,8 @@ function NewTodo({newTodo}) {
 
   return (
     <div>
-        <div>
-            <p><label>New Todo</label></p>
+        <div className={NewTodoStyles.NewTodo_Form}>
+            <label>New Todo</label>
             <input type="text" value={todoItem} onChange={event => setTodoItem(event.target.value)}/>
             <button onClick={handleAddNewTodo}>Add</button>
         </div>

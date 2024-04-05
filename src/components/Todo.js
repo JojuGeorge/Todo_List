@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import TodoStyles from './Todo.module.css'
 
 
@@ -31,16 +32,28 @@ function Todo({todoItem, completedTodoItem, deleteTodoItem, editTodoItem}) {
     <div>
         <div> 
             {!editing ? (
-            <div>
+            <div className={TodoStyles.Todo}>
                  <span className={completed ? TodoStyles.completed +" "+ TodoStyles.todoItem: TodoStyles.todoItem} onClick={handleCompleted}>{task} </span>
-                 <input type="checkbox" checked={completed} onChange={handleCompleted}/>
-                 <button onClick={handleEditItem}>Edit</button>
-                 <button onClick={handleDeleteItem}>Delete</button>
+                 <span>
+                    {/* <input type="checkbox" checked={completed} onChange={handleCompleted}/> */}
+                   <span className={TodoStyles.Todo_Buttons}>
+                        <button onClick={handleEditItem}> 
+                            <i className='fas fa-pen'/>
+                        </button>
+                        <button onClick={handleDeleteItem}>
+                            <i className='fas fa-trash'/>
+                        </button>
+                    </span>
+                </span>
              </div>
             ):(
-                <div>
+                <div className={TodoStyles.Todo +" "+TodoStyles.Todo_Edit}>
                      <input type="text" value={todoTask} onChange={event => setTodoTask(event.target.value)} />
-                     <button onClick={handleSaveItem}>Save</button>
+                     <span className={TodoStyles.Todo_Buttons }>
+                     <button onClick={handleSaveItem}>
+                        <i className='fas fa-save'/>
+                     </button>
+                     </span>
                 </div>
             )}
            

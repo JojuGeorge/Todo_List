@@ -1,10 +1,57 @@
 
+.Todo{
+    display: flex;
+    margin: 0 -3rem 4px;
+    padding: 1.1rem 3rem;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .completed {
     text-decoration: line-through;
-    color: lightgray;
+    opacity: .7;
 }
 
 .todoItem:hover{
     cursor: pointer;
 }
 
+.Todo_Buttons{
+    flex-shrink: 0;
+    padding-left: .7em;
+}
+
+.Todo_Buttons button{
+    border: none;
+    font-size: .9em;
+    margin: .4em;
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    color: #fff;
+
+}
+
+.Todo_Buttons button:hover{
+    color: rgb(233, 227, 227)
+}
+
+.Todo_Edit{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Todo_Edit input{
+    flex-grow: 1;
+    border: none;
+    background: #f7f1f1;
+    padding: 0 1.5em;
+    font-size: initial;
+}
+
+.Todo_Edit input, 
+.Todo_Edit button {
+    font-family: "Quicksand", sans-serif;
+    height: 2rem;
+}
