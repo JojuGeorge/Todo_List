@@ -23,7 +23,16 @@ function Todo({todoItem, completedTodoItem, deleteTodoItem, editTodoItem}) {
 
     const handleSaveItem = ()=>{
         setEditing(false)
-        editTodoItem({todoTask, id})
+
+        if(todoTask !== ""){
+            console.log(todoTask)
+            editTodoItem({todoTask, id})
+        }
+        else{
+            setTodoTask(task)
+            editTodoItem({todoTask:task, id})
+            console.log("Empty save not possible", task)
+        }
     }
 
 
