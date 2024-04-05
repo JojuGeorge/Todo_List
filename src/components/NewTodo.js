@@ -1,12 +1,18 @@
-import React,{useState} from 'react'
+import React,{useState, useRef, useEffect} from 'react'
 import {v4 as uuid} from "uuid";
 import NewTodoStyles from './NewTodo.module.css'
 
 function NewTodo({newTodo}) {
 
     const [todoItem, setTodoItem] = useState("");
+    const inputRef = useRef();
 
-    const handleAddNewTodo = ()=>{
+    useEffect(()=>{
+        inputRef.current.focus();
+    })
+
+    const handleAddNewTodo = (event)=>{
+        event.preventDefault();
         if(todoItem !== ""){
             newTodo({task:todoItem, id:uuid(), completed:false});
             setTodoItem("")
@@ -18,11 +24,11 @@ function NewTodo({newTodo}) {
 
   return (
     <div>
-        <div className={NewTodoStyles.NewTodo_Form}>
+        <form className={NewTodoStyles.NewTodo_Form}>
             <label>New Todo</label>
-            <input type="text" value={todoItem} onChange={event => setTodoItem(event.target.value)}/>
-            <button onClick={handleAddNewTodo}>Add</button>
-        </div>
+            <input type="text" ref={inputRef} value={todoItem} onChange={event => setTodoItem(event.target.value)}/>
+            <button onClick={(e)=>handleAddNewTodo(e)}>Add</button>
+        </form>
     </div>
   )
 }

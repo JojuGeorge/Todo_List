@@ -9,6 +9,8 @@ function Todo({todoItem, completedTodoItem, deleteTodoItem, editTodoItem}) {
     const [todoTask, setTodoTask] = useState(task)
     const [editing, setEditing] = useState(false)
 
+  
+
     const handleCompleted = ()=>{
         completedTodoItem(id)
     }
@@ -56,14 +58,14 @@ function Todo({todoItem, completedTodoItem, deleteTodoItem, editTodoItem}) {
                 </span>
              </div>
             ):(
-                <div className={TodoStyles.Todo +" "+TodoStyles.Todo_Edit}>
-                     <input type="text" value={todoTask} onChange={event => setTodoTask(event.target.value)} />
+                <form className={TodoStyles.Todo +" "+TodoStyles.Todo_Edit}>
+                     <input type="text"  value={todoTask} onChange={event => setTodoTask(event.target.value)} />
                      <span className={TodoStyles.Todo_Buttons }>
                      <button onClick={handleSaveItem}>
                         <i className='fas fa-save'/>
                      </button>
                      </span>
-                </div>
+                </form>
             )}
            
         </div>
